@@ -19,7 +19,7 @@ class _ViewAttendanceState extends State<ViewAttendance> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green[700],
+        backgroundColor: Colors.indigo,
         title: Text("Daily Attendance Report"),
       ),
       body: AttendanceSlider(id:id),

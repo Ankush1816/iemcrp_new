@@ -136,79 +136,91 @@ class _Mark_AttendenceState extends State<Mark_Attendence> {
         // log(codes!["code"]);
         return Scaffold(
           appBar: AppBar(
-            backgroundColor: Colors.green[700],
+            backgroundColor: Colors.indigo,
             title:Text("Mark Attendence"),
           ),
-          body: Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TextFormField(
-                  decoration: textInputDecoration.copyWith(hintText: 'Enter Code'),
-                  onChanged: (val){
-                    setState(() {
-                      enteredCode=val;
-                    });
-                    // enteredCode=val;
-                    // log(globals.code);
-                    // if(doc["code"]==val)
-                    //   correctCode=true;
-                    // else
-                    //   correctCode=false;
-                  },
+          body: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(18.0),
+              child: Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.network("https://t3.ftcdn.net/jpg/04/66/63/96/360_F_466639671_pkaOjhv66VjNTrLPJc3NDWt1gz6mJrQX.jpg",),
+                    TextFormField(
+                      decoration: textInputDecoration.copyWith(hintText: 'Enter Code'),
+                      onChanged: (val){
+                        setState(() {
+                          enteredCode=val;
+                        });
+                        // enteredCode=val;
+                        // log(globals.code);
+                        // if(doc["code"]==val)
+                        //   correctCode=true;
+                        // else
+                        //   correctCode=false;
+                      },
 
+                    ),
+                    SizedBox(height: 10,),
+                    TextFormField(
+                      decoration: textInputDecoration.copyWith(hintText: 'Enter Period'),
+                      onChanged: (val){
+                        log(val);
+                        setState(() {
+                          if(val=="")
+                            enteredPeriod=0;
+                          else
+                            enteredPeriod=int.parse(val);
+                        });
+                      },
+                    ),
+                    SizedBox(height: 10,),
+
+                    ElevatedButton(onPressed: () async{
+                      String cdate = DateFormat("yyyy-MM-dd").format(DateTime.now());
+                      print(cdate);
+                      print(user?.uid);
+                      DatabaseService(uid: studentData[1]).updateAttendenceData(period,cdate);
+
+                      log("DATE---    "+cdate);
+                      log(code);
+
+                      log("ENTERED CODE"+ enteredCode);
+                      log("ENTERED PERIOD" + enteredPeriod.toString());
+                      if(code==enteredCode && period==enteredPeriod) {
+                        setState(() {
+                          status="Attendence Marked";
+
+                        });
+
+                        log("Attendence Marked");
+                      }
+                      else {
+                        setState(() {
+                          status="Invalid Entry";
+                        });
+                        log("-----No-----");
+                      }
+                    },
+
+                        child: Text("Mark Attendence",
+                          style: TextStyle(
+                              fontSize: 20
+                          ),),
+                      style: ElevatedButton.styleFrom(
+                          primary: Colors.grey,
+                          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                          textStyle: TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold)),
+                    ),
+                    Text(status),
+                  ],
                 ),
-                SizedBox(height: 10,),
-                TextFormField(
-                  decoration: textInputDecoration.copyWith(hintText: 'Enter Period'),
-                  onChanged: (val){
-                    log(val);
-                    setState(() {
-                      if(val=="")
-                        enteredPeriod=0;
-                      else
-                        enteredPeriod=int.parse(val);
-                    });
-                  },
-                ),
-                SizedBox(height: 10,),
 
-                ElevatedButton(onPressed: () async{
-                  String cdate = DateFormat("yyyy-MM-dd").format(DateTime.now());
-                  print(cdate);
-                  print(user?.uid);
-                  DatabaseService(uid: studentData[1]).updateAttendenceData(period,cdate);
-
-                  log("DATE---    "+cdate);
-                  log(code);
-
-                  log("ENTERED CODE"+ enteredCode);
-                  log("ENTERED PERIOD" + enteredPeriod.toString());
-                  if(code==enteredCode && period==enteredPeriod) {
-                    setState(() {
-                      status="Attendence Marked";
-
-                    });
-
-                    log("Attendence Marked");
-                  }
-                  else {
-                    setState(() {
-                      status="Invalid Entry";
-                    });
-                    log("-----No-----");
-                  }
-                },
-
-                    child: Text("Mark Attendence",
-                      style: TextStyle(
-                          fontSize: 20
-                      ),)
-                ),
-                Text(status),
-              ],
+              ),
             ),
-
           ),
         );
       }

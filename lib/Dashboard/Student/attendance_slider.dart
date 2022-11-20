@@ -23,8 +23,8 @@ class _AttendanceSliderState extends State<AttendanceSlider> {
   @override
   Widget build(BuildContext context) {
     List<ContentConfig> listContentConfig = [];
-    Color activeColor = const Color(0xff66bb6a);
-    Color inactiveColor = const Color(0xff1b5e20);
+    Color activeColor = const Color(0xff89CFF0);
+    Color inactiveColor = const Color(0xff00FFFF);
     double sizeIndicator = 20;
     return StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance

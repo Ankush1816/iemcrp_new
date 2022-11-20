@@ -6,8 +6,10 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:iemcrp_new/Dashboard/Student/mark_attendence.dart';
 import 'package:iemcrp_new/Dashboard/Student/viewAttendance.dart';
+import 'package:iemcrp_new/Todo/TodoList.dart';
 import 'package:iemcrp_new/Widgets/Buttons_small.dart';
 import 'package:iemcrp_new/models/students.dart';
+import 'package:iemcrp_new/screens/Routine/Routineview.dart';
 import 'package:provider/provider.dart';
 
 import '../../models/user.dart';
@@ -50,6 +52,7 @@ class _StudentProfileState extends State<StudentProfile> {
 
         child: Center(
           child: Container(
+            color: Colors.indigo.shade100,
             margin: const EdgeInsets.only(top: 10),
             child: Column(
               children: [
@@ -60,96 +63,15 @@ class _StudentProfileState extends State<StudentProfile> {
 
                     children: [
 
-                      Padding(
-                        padding: const EdgeInsets.only(left: 15.0, right: 5),
 
-                        child: Container(
-                            width: 50,
-                            height: 50,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(100),
-                                border: Border.all(color: const Color(
-                                    0xFF0040c2))),
-                            child: Container(
-                              width: 145,
-                              height: 145,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(100),
-                                  image: const DecorationImage(
-                                      image: NetworkImage(
-                                          'https://images.pexels.com/photos/428364/pexels-photo-428364.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
-                                      fit: BoxFit.cover)),
-                            )),
-                      ),
-                      SizedBox(width: 10,),
-                      Container(
-                        child: Text(name,
-                          // "Arka",
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
-                      ),                      SizedBox(width: 10,),
-
-                      IconButton(onPressed: (){
-                        Get.to(ViewAttendance(),arguments: id);
-                      },
-                        icon: FaIcon(FontAwesomeIcons.solidCalendarDays,
-                          color: Colors.amber,
-                          size: 28,
-                        ),),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 35,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 28.0, right: 20),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Stream',
-                              style: TextStyle(
-                                  fontSize: 19,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(width: 5),
-                            Text(
-                              stream,
-                              style:
-                              TextStyle(fontSize: 19, color: Colors.black),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
 
                       Container(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Text(
-                              'Univ. Roll no.',
-                              style: TextStyle(
-                                  fontSize: 19,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
-                            ),
+
                             SizedBox(width: 5),
-                            Text(
-                              enrollment,
-                              style:
-                              TextStyle(fontSize: 19, color: Colors.black),
-                            ),
+
                           ],
                         ),
                       ),
@@ -157,13 +79,8 @@ class _StudentProfileState extends State<StudentProfile> {
                   ),
                 ),
 
-                SizedBox(
-                  height: 20,
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                SizedBox(height: 20,),
+
+                SizedBox(height: 30,),
                 Container(
                   padding: EdgeInsets.only(left: 28, right: 28),
                   child: Row(
@@ -171,18 +88,23 @@ class _StudentProfileState extends State<StudentProfile> {
                     children: [
                       Buttons_small(
 
-                        Textcolor: Colors.black,
-                        BackgroundColor: Colors.grey.withOpacity(0.2),
+                        Textcolor: Colors.indigo,
+                        BackgroundColor: Colors.white,
                         text: 'Give Attendence',
                         ontap: () => Get.to(Mark_Attendence(),arguments: [stream,id]),
-                        icon: Icons.edit,
+                        icon: Icons.mark_chat_read,
+                        Iconcolor: Colors.red,
+                        Iconsize: 35,
                         size: 150,
                       ),
                       Buttons_small(
-                        Textcolor: Colors.black,
-                        BackgroundColor: Colors.grey.withOpacity(0.2),
-                        text: 'Edit',
-                        icon: Icons.save,
+                        ontap: (){Get.to(TodoList());},
+                        Textcolor: Colors.indigo,
+                        BackgroundColor: Colors.white,
+                        text: 'Todo',
+                        icon: Icons.list,
+                        Iconcolor: Colors.purpleAccent,
+                        Iconsize: 35,
                         size: 150,
                       ),
 
@@ -190,7 +112,7 @@ class _StudentProfileState extends State<StudentProfile> {
                   ),
                 ),
                 SizedBox(
-                  height: 25,
+                  height: 30,
                 ),
                 Container(
                   padding: EdgeInsets.only(left: 28, right: 28),
@@ -198,41 +120,79 @@ class _StudentProfileState extends State<StudentProfile> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Buttons_small(
-                        Textcolor: Colors.black,
-                        BackgroundColor: Colors.grey.withOpacity(0.2),
-                        text: 'Edit',
-                        icon: Icons.edit,
+                        ontap: (){Get.to(ViewAttendance(),arguments: id);},
+                        Textcolor: Colors.indigo,
+                        BackgroundColor: Colors.white,
+                        text: 'Check attendence',
+                        icon: Icons.co_present,
+                        Iconcolor: Colors.blue,
+                        Iconsize: 35,
                         size: 150,
                       ),
                       Buttons_small(
-                        Textcolor: Colors.black,
-                        BackgroundColor: Colors.grey.withOpacity(0.2),
-                        text: 'Edit',
-                        icon: Icons.save,
+                        ontap: (){Get.to(Routineview());},
+                        Textcolor: Colors.indigo,
+                        BackgroundColor: Colors.white,
+                        text: 'Routine',
+                        icon: Icons.schedule,
+                        Iconcolor: Colors.yellow,
+                        Iconsize: 35,
                         size: 150,
                       ),
 
                     ],
                   ),
                 ),
-                SizedBox(height: 20,),
+                SizedBox(height: 30,),
                 Container(
                   padding: EdgeInsets.only(left: 28, right: 28),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Buttons_small(
-                        Textcolor: Colors.black,
-                        BackgroundColor: Colors.grey.withOpacity(0.2),
-                        text: 'Edit',
-                        icon: Icons.edit,
+                        Textcolor: Colors.indigo,
+                        BackgroundColor: Colors.white,
+                        text: 'Links',
+                        icon: Icons.link,
+                        Iconcolor: Colors.green,
+                        Iconsize: 35,
                         size: 150,
                       ),
                       Buttons_small(
-                        Textcolor: Colors.black,
-                        BackgroundColor: Colors.grey.withOpacity(0.2),
-                        text: 'Edit',
-                        icon: Icons.save,
+                        Textcolor: Colors.indigo,
+                        BackgroundColor: Colors.white,
+                        text: 'Materials',
+                        icon: Icons.library_books,
+                        Iconcolor: Colors.red,
+                        Iconsize: 35,
+                        size: 150,
+                      ),
+
+                    ],
+                  ),
+                ),
+                SizedBox(height: 30,),
+                Container(
+                  padding: EdgeInsets.only(left: 28, right: 28),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Buttons_small(
+                        Textcolor: Colors.indigo,
+                        BackgroundColor: Colors.white,
+                        text: 'Fees',
+                        icon: Icons.payment,
+                        Iconcolor: Colors.cyanAccent,
+                        Iconsize: 35,
+                        size: 150,
+                      ),
+                      Buttons_small(
+                        Textcolor: Colors.indigo,
+                        BackgroundColor: Colors.white,
+                        text: 'Marks',
+                        icon: Icons.sports_score_outlined,
+                        Iconcolor: Colors.blueGrey,
+                        Iconsize: 35,
                         size: 150,
                       ),
 

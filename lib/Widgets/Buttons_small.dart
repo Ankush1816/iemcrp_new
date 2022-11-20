@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 class Buttons_small extends StatelessWidget {
   final Color Textcolor;
   final Color BackgroundColor;
+  final Color Iconcolor;
+  double Iconsize;
   final String text;
   final IconData icon;
   double size;
@@ -16,7 +18,8 @@ class Buttons_small extends StatelessWidget {
     required this.text,
     required this.icon,
     required this.size,
-     this.ontap,
+    required this.Iconsize,
+     this.ontap, required this.Iconcolor,
   }) : super(key: key);
 
 
@@ -33,14 +36,14 @@ class Buttons_small extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(icon),
+              Icon(icon,color: Iconcolor,size: Iconsize,),
               Text(text,style: TextStyle(color: Textcolor),),
             ],
           ),
         ),
         decoration: BoxDecoration(
           color: BackgroundColor,
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(0),
 
           boxShadow: [
             BoxShadow(

@@ -26,20 +26,21 @@ class _TeacherHomeState extends State<TeacherHome> {
         catchError: (_, __) => null,
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: Colors.green[700],
-              title: Text('Teacher'),
+            backgroundColor: Colors.indigo,
+              title: Text('Iemcrp'),
               actions: <Widget>[
             TextButton.icon(
               icon: Icon(
                 Icons.person,
-                color: Colors.brown[800],
+                color: Colors.white,
               ),
               onPressed: () async {
                 await _auth.signOut();
               },
-              label: Text('logout', style: TextStyle(color: Colors.brown[800])),
+              label: Text('logout', style: TextStyle(color: Colors.white)),
             )
           ]),
+          drawer: Drawer(),
           backgroundColor: Colors.white,
           body: TeacherProfile(),
         ));

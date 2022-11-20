@@ -48,6 +48,7 @@ dependencies:
 
   # state management, intelligent dependency injection, and route management
   get: ^4.1.4
+  syncfusion_flutter_datagrid: ^20.3.57
 #  cloud_functions: ^3.3.9
 
 

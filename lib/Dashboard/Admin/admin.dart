@@ -37,7 +37,7 @@ class _AdminState extends State<Admin> {
     return loading ? Loading(): Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        backgroundColor: Colors.green[700],
+        backgroundColor: Colors.indigo,
         title: Text("Admin"),
 
         actions: <Widget>[
@@ -151,7 +151,7 @@ class _AdminState extends State<Admin> {
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                primary: Colors.pink[400],
+                primary: Colors.grey,
               ),
               child: Text('Register user',
                   style: TextStyle(

@@ -163,6 +163,8 @@ class _TeacherProfileState extends State<TeacherProfile> {
                       text: 'Create Attendence',
                       ontap: () => Get.to(Question_fromDatabase()),
                       icon: Icons.edit,
+                      Iconcolor: Colors.red,Iconsize: 20,
+
                       size: 150,
                     ),
                     Buttons_small(
@@ -170,6 +172,8 @@ class _TeacherProfileState extends State<TeacherProfile> {
                       BackgroundColor: Colors.grey.withOpacity(0.2),
                       text: 'Edit',
                       icon: Icons.save,
+                      Iconcolor: Colors.red,
+                      Iconsize: 20,
                       size: 150,
                     ),
                   ],
@@ -188,6 +192,8 @@ class _TeacherProfileState extends State<TeacherProfile> {
                       BackgroundColor: Colors.grey.withOpacity(0.2),
                       text: 'Edit',
                       icon: Icons.edit,
+                      Iconcolor: Colors.red,
+                      Iconsize: 20,
                       size: 150,
                     ),
                     Buttons_small(
@@ -195,6 +201,8 @@ class _TeacherProfileState extends State<TeacherProfile> {
                       BackgroundColor: Colors.grey.withOpacity(0.2),
                       text: 'Edit',
                       icon: Icons.save,
+                      Iconcolor: Colors.red,
+                      Iconsize: 20,
                       size: 150,
                     ),
                   ],
@@ -213,6 +221,8 @@ class _TeacherProfileState extends State<TeacherProfile> {
                       BackgroundColor: Colors.grey.withOpacity(0.2),
                       text: 'Edit',
                       icon: Icons.edit,
+                      Iconcolor: Colors.red,
+                      Iconsize: 20,
                       size: 150,
                     ),
                     Buttons_small(
@@ -220,6 +230,9 @@ class _TeacherProfileState extends State<TeacherProfile> {
                       BackgroundColor: Colors.grey.withOpacity(0.2),
                       text: 'Edit',
                       icon: Icons.save,
+                      Iconcolor: Colors.red,
+                      Iconsize: 20,
+
                       size: 150,
                     ),
                   ],
